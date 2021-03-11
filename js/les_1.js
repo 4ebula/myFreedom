@@ -75,7 +75,7 @@ do{
 }while(k < 55);
 */
 
-let arr = Array.from({length: 10}, e => Math.trunc(Math.random()*10));
+let randArr = Array.from({length: 10}, e => Math.trunc(Math.random()*10));
 /*
 for (let i = 0; i < arr.length; i++) {
   console.log(arr[i]);
@@ -95,18 +95,15 @@ for (let i = 0; i < newArr.length; i++) {
 }
 
 */
-
+/*
 let name3 = 'Gleb';
 let name4;
-/*
+
 console.log('My name is ' + name3);
 console.log(`My name is ${name3}`);
 */
 
 /*
-console.log('!!' + (name4 = 'SMTH'));
-console.log(name4);
-
 function multiplyNumbers(...x){
   return x.reduce((acc, e) => acc *= e, 1);
 
@@ -137,8 +134,8 @@ function nameInput(arg){
 nameInput(prompt('You name', ));
 */
 
-
-
+/* OBJ */
+/*
 let girl = {
   name: 'Sasha',
   age: 16,
@@ -151,9 +148,8 @@ let girl = {
   }
 };
 
-
 girl.canDo();
 girl.another();
-
+*/
 
 //Леа Беру - Секреты CSS
