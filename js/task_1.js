@@ -1,5 +1,8 @@
 /* TASK #1 */
 function variableChanger(x, y) {
+  if(x == 0) {x = y; x = 0;}
+  if(y == 0) {y = x; y = 0;}
+  if(x == 0 && y == 0) return [0, 0];
   x *= y;
   y = x / y;
   x /= y;
