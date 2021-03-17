@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * div{
+      box-sizing: border-box;
+    }
+    .container{
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container-form{
+      width: 300px;
+      height: 300px;
+      padding: 15px;
+      border: 1px solid #000;
+    }
+    form{      
+      display: flex;
+      flex-direction: column;      
+      box-sizing: border-box;
+    }
+    button{
+      width: 100%;
+      margin-top: 10px;
+      height: 35px;
+    }
+    .answer{
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+      
+    }
+    .wrong{
+      background-color: #ff8585;
+    }
+    .correct{
+      background-color: #b2ff85;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="container-form">
+      <form action="">
+        <label for="mass">Enter mass</label>
+        <input type="text" name="mass">
+        <label for="velocity">Enter mass</label>
+        <input type="text" name="velocity">
+        
+      </form>
+      <button value="calculate">Calculate</button>
+  </div>
+  </div>
+  <script src="task_2.1.js"></script>
+</body>
+</html>
