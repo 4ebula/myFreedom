@@ -56,11 +56,11 @@ function getLitres(amount) {
   switch (true) {
     case amount === 1: return ` ${str}`;
       break;
-    case amount > 1 && amount < 5: return ` ${str}а`;
+    case amount > 1 || amount < 5: return ` ${str}а`;
       break;
-    case amount > 20: return getLitres(amount % 10);
+    case amount > 20: getLitres(amount % 10);
       break;
-    default: return ` ${str}ов`;
+    default: return `${str}ов`;
       break;
   }
 }
