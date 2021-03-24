@@ -19,7 +19,7 @@ for(let e in obj){
 const num_2digit = Math.trunc(Math.random() * 89 + 10);
 const num_3digit = Math.trunc(Math.random() * 899 + 100);
 
-function digitRange(downRange, upRange){
+function digitRange(downRange, upRange) {
   return Math.trunc(Math.random() * (upRange - downRange - 1) + downRange);
 }
 
@@ -29,7 +29,7 @@ function deviders(_range) {
   console.log('\n\n');
   let range = _range[2];
   let j = num;
-  while(j <= range - num){
+  while (j <= range - num) {
     console.log('%c%d', 'color: #f00;', j += num);
   }
   for (let i = 1; i <= range; i++) {
@@ -45,3 +45,24 @@ deviders([10, 100, 1000]);
  *************** FUNCTIONS **************
  ****************************************/
 
+const amount = Math.trunc(Math.random() * 100);
+
+function getString(amount) {
+  console.log(amount + getLitres(amount));
+
+}
+function getLitres(amount) {
+  const str = 'литр';
+  switch (true) {
+    case amount === 1: return ` ${str}`;
+      break;
+    case amount > 1 && amount < 5: return ` ${str}а`;
+      break;
+    case amount > 20: return getLitres(amount % 10);
+      break;
+    default: return ` ${str}ов`;
+      break;
+  }
+}
+
+getString(amount);
