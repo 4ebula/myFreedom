@@ -34,7 +34,7 @@ function validateInput(continueFunc) {
     case curValue === '':
     case Number.isNaN(+curValue):
     case +curValue < 0: {
-      if (confirm('Wrong type of entered data. Continue?')) return validateInput(getSalaryValue);
+      if (confirm('Wrong type of entered data. Continue?')) return validateInput(continueFunc);
       else return -1;
     }
       break;
