@@ -18,7 +18,7 @@ function getTextStr() {
 }
 
 const displaySalary = function () {
-  let curSalary = validateInput(getSalaryValue);
+  let curSalary = checkInput(getSalaryValue);
   if (~curSalary) {
     salaries.push(curSalary);
     displaySalary();
@@ -26,7 +26,7 @@ const displaySalary = function () {
   else alert(getTextStr());
 }
 
-function validateInput(continueFunc) {
+function checkInput(continueFunc) {
   let curValue = continueFunc();
   switch (true) {
     case curValue === null: return -1;
@@ -34,7 +34,7 @@ function validateInput(continueFunc) {
     case curValue === '':
     case Number.isNaN(+curValue):
     case +curValue < 0: {
-      if (confirm('Wrong type of entered data. Continue?')) return validateInput(continueFunc);
+      if (confirm('Wrong type of entered data. Continue?')) return checkInput(continueFunc);
       else return -1;
     }
       break;
@@ -46,7 +46,7 @@ function validateInput(continueFunc) {
 
 // Get litres suffixes
 function getString() {
-  let curValue = validateInput(getLitresValue);
+  let curValue = checkInput(getLitresValue);
 
   if (~curValue) alert(curValue + getLitres(curValue));
 }
