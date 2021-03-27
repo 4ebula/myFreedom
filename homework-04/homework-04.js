@@ -10,7 +10,7 @@ const calcSalaryAverage = () => salaries.length ? calcSalarySum() / salaries.len
 const calcSalarySum = () => salaries.reduce((acc, e) => acc + e, 0);
 const getEnteredSalaries = () => salaries.join('$ + ') + '$';
 const getSalaryValue = () => prompt(salaries.length ? getTextStr() : 'Enter salary');
-const getLitresValue = () => prompt('Enter litres value');
+/*const getLitresValue = () => prompt('Enter litres value');*/
 
 // Gets salaries
 function getTextStr() {
@@ -19,11 +19,14 @@ function getTextStr() {
 
 const displaySalary = function () {
   let curSalary = checkInput(getSalaryValue);
-  if (~curSalary) {
+  if (curSalary !== -1) {
     salaries.push(curSalary);
     displaySalary();
   }
-  else alert(getTextStr());
+  else {
+    alert(getTextStr());
+    salaries.length = 0;
+  }
 }
 
 function checkInput(continueFunc) {
@@ -46,9 +49,8 @@ function checkInput(continueFunc) {
 
 // Get litres suffixes
 function getString() {
-  let curValue = checkInput(getLitresValue);
-
-  if (~curValue) alert(curValue + getLitres(curValue));
+  let curValue = checkInput(() => prompt('Enter litres value'));
+  if (curValue !== -1) alert(curValue + getLitres(curValue));
 }
 
 function getLitres(amount) {
