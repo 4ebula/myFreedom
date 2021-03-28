@@ -12,8 +12,11 @@ const Kelly = ['Kelly', 65, 'Manchester', 'Retired', ['Travel England'], 'Jim', 
 const Mary = ['Mary', 66, 'Liverpool', , , 'Nicolas', , , ['Eric']];
 const Nicolas = ['Nicolas', 70, 'Liverpool', 'Head of security', ['Prima violin in Liverpool orchestra'], 'Mary'];
 
-person.forEach(e => addPersonlegend(e, eval(e)));
-person.forEach(e => ['spouse', 'parents', 'children', 'sibllins'].forEach(el => addFamilyTies(e, el)));
+
+person.forEach(elem => addPersonlegend(elem, eval(elem)));
+person.forEach(elem => ['spouse', 'parents', 'children', 'sibllins'].forEach(elem1 => addFamilyTies(elem, elem1)));
+
+
 
 function addPersonlegend(person, characteristics) {
   familyTree[person] = {};
