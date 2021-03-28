@@ -18,13 +18,13 @@ person.forEach(e => ['spouse', 'parents', 'children', 'sibllins'].forEach(el => 
 function addPersonlegend(person, characteristics) {
   familyTree[person] = {};
   for (let i = 0; i < legend.length; i++) {
-    familyTree[person][legend[i]] = characteristics[i];
+    familyTree[person][legend[i]] = characteristics[i] || 'unknown';
   }
 }
 
 function addFamilyTies(firstName, key) {
   let relatives = familyTree[firstName][key];
-  if (relatives !== undefined) {
+  if (relatives !== undefined && relatives !== 'unknown') {
     if (Array.isArray(relatives)) {
       relatives = relatives.map(e => e !== undefined ? familyTree[e] : undefined);
       familyTree[firstName][key] = relatives;
