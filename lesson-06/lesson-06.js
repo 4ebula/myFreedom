@@ -11,7 +11,7 @@
 /**********************************
  * REGULAR EXPRESSIONS
 ***********************************/
-/*
+
 function getRandomStr (length){
   let arr = new Array(length);
   for (let i = 0; i < arr.length; i++) {
@@ -47,13 +47,13 @@ function RegexFuncs (){
   console.log(c);
   // Returns an iterator containing all of the matches,
   // including capturing groups.
- // let d = str.matchAll(/\d.*?/);
- // console.log(d);
+  let d = str.matchAll(/\d.*?/g);
+  console.log(d);
 }
 RegexFuncs ();
 
 console.log('\n');
-*/
+
 
 /*******************************
  * FUNCTION AND SCOPE
