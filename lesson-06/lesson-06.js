@@ -47,7 +47,7 @@ function RegexFuncs (){
   console.log(c);
   // Returns an iterator containing all of the matches,
   // including capturing groups.
-  let d = str.matchAll(/\d.*?/g);
+  let d = str.matchAll(/\d.*?/, 'g');
   console.log(d);
 }
 RegexFuncs ();
