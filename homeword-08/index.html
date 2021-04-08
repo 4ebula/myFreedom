@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>homework-08</title>
+  <style>
+    :root {
+      --height: 100px;
+
+    }
+    div, button {
+      box-sizing: border-box;
+    }
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      list-style: none;
+    }
+    .wrapper {
+      width: 1800px;
+      
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    @media screen and (max-width: 1920px) {
+      .wrapper {
+        width: 1440px;
+      }
+    }
+    @media screen and (max-width: 1600px) {
+      .wrapper {
+        width: 980px;
+      }
+    }
+    @media screen and (max-width: 1024px) {
+      .wrapper {
+        width: 640px;
+      }
+    }
+    @media screen and (max-width: 640px) {
+      .wrapper {
+        width: 320px;
+      }
+    }
+    .field {
+      position: relative;
+      width: 90%;
+      padding-top: 30px;
+    }
+    .types {
+      width: 100%;
+      height: fit-content;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .hide {
+      visibility: hidden;
+    }
+    .show {
+      visibility: visible;
+    }
+    .card {
+      width: 300px;
+      margin: 15px;
+      padding: 10px;
+      box-shadow: 10px 10px 15px 5px #727272;
+    }
+    .input-count textarea {
+      width: 90%;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="buttons">
+      <button data-block-name='quiz'>Quiz</button>
+      <button data-block-name='input-count' data-key='a'>Count 'A' input</button>
+      <button data-block-name='dsp-types'>Display types</button>
+    </div>
+    <div class="field" id='field'>
+
+    </div>
+  </div>
+  <script src="homework-08.js"></script>
+</body>
+</html>
