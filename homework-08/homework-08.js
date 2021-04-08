@@ -1,6 +1,8 @@
 const buttons = document.querySelector('.buttons');
 const blocks = [];
-let inputText;
+let inputText = '';
+
+
 buttons.addEventListener('click', () => {
   if (event.target.tagName === 'BUTTON') {
     blocks.forEach((e) => {
@@ -8,26 +10,19 @@ buttons.addEventListener('click', () => {
       e.classList.add('hide')
     });
     let pointer = -1;
-    switch(true) {
-      case event.target.dataset.blockName === 'quiz': '1';
-      break;
-      case event.target.dataset.blockName === 'input-count': pointer = 0;
-      
-      break;
-      case event.target.dataset.blockName === 'dsp-types': pointer = 1;
+    switch (true) {
+      case event.target.dataset.blockName === 'quiz': pointer = 0;
+        break;
+      case event.target.dataset.blockName === 'input-count': pointer = 1;
+
+        break;
+      case event.target.dataset.blockName === 'dsp-types': pointer = 2;
         break;
     }
     blocks[pointer].classList.remove('hide');
     blocks[pointer].classList.add('show');
   }
-  if (blocks[0].classList.contains('show')) {
-    console.log(blocks[0].querySelector('textarea'));
-    console.log(inputedText.innerHTML);
-    let content = blocks[0].querySelector('textarea').shadowRoot.querySelector('div').textContent;
-    blocks.addEventListener('keydown', calcLetterAmount('a', content));
-  }
 });
-
 
 const dataTypes = [
   false,
@@ -42,8 +37,6 @@ const dataTypes = [
   () => { },
 ];
 
-const str = 'aAa';
-
 const quizTable = [
   {
     q: 'Who\'s to blame for the whole planet suffering from COVID?',
@@ -51,11 +44,11 @@ const quizTable = [
   },
   {
     q: 'Name the creator of periodic table.',
-    a: ['Mendeleev', 'Dmitri'],
+    a: 'Mendeleev',
   },
   {
     q: 'Name the creator of relativity theory.',
-    a: ['Einstein', 'Albert'],
+    a: 'Einstein',
   },
   {
     q: 'Name the capital of Germany.',
@@ -75,20 +68,45 @@ const quizTable = [
   },
   {
     q: 'Name the author of "Morning in a Pine Forest" painting.',
-    a: [['Shishkin', 'Ivan'], ['Savitsky', 'Konstantin']],
+    a: 'Shishkin',
   },
   {
     q: 'Name the first man on the Moon.',
-    a: ['Armstrong Neil'],
+    a: 'Armstrong',
   },
 ];
 
+function createQuizBlock() {
+  const div = document.createElement('div');
+  const submitBtn = document.createElement('button');
+  const ul = document.createElement('ul');
+  for (let i = 0; i < quizTable.length; i++) {
+    const question = document.createElement('li');
+    const p = document.createElement('p');
+    const answerField = document.createElement('textarea');
+    answerField.className = 'answer-field';
+    p.textContent = `${('0' + (i + 1)).slice(-2)}: ` + quizTable[i].q;
+    question.appendChild(p);
+    question.appendChild(answerField);
+    ul.appendChild(question);
+  }
+  div.className = 'quiz hide';
+  div.appendChild(ul);
+  submitBtn.textContent = 'Check!';
+  submitBtn.addEventListener('click', () => checkQuiz());
+  div.appendChild(submitBtn);
+  field.appendChild(div);
+  blocks.push(field.querySelector('.quiz'));
+}
+
+createQuizBlock();
 (function () {
   const divInput = document.createElement('div');
   const text = document.createElement('textarea');
   text.id = 'inputedText';
   const paragraf = document.createElement('p');
   const counter = document.createElement('span');
+  counter.id = 'counter';
   divInput.className = 'input-count hide';
   paragraf.textContent = 'Count: ';
   counter.textContent = '0';
@@ -97,7 +115,17 @@ const quizTable = [
   divInput.appendChild(paragraf);
   field.appendChild(divInput);
   blocks.push(field.querySelector('.input-count'));
+
+  window.addEventListener('keydown', () => watchKeyEvent());
+  window.addEventListener('keyup', () => watchKeyEvent());
 })();
+
+function watchKeyEvent() {
+  inputText = inputedText.value;
+  let calcAmount = calcLetterAmount('a', inputText);
+  let dispAmount = counter.textContent;
+  if (calcAmount !== +dispAmount) counter.textContent = calcAmount;
+}
 
 (function () {
   const divTypes = document.createElement('div');
@@ -119,10 +147,33 @@ const quizTable = [
   blocks.push(divTypes);
 })();
 
+
+function checkQuiz() {
+  const answers = document.querySelectorAll('.answer-field');
+  let answersArr = Object.entries(answers).map((e) => e[1].value);
+  let rightAnswers = 0, wrongAnswers = 0;
+  answersArr = answersArr.map((e, i) => {
+    if (e === '') wrongAnswers++;
+    else if (e.toLowerCase() === quizTable[i].a.toLowerCase()) {
+      rightAnswers++;
+      return true;
+    } else {
+      wrongAnswers++;
+      return false;
+    }
+  });
+  Object.entries(answers).forEach((e) => e[1].value = '');
+  let message = answersArr.map((e, i) => `${('0' + i).split(-2)} - ` + (e ? 'Right' : 'Wrong') + '\n').join('');
+  message += `Amount of right answers: ${rightAnswers}\nAmount of wrong answers: ${wrongAnswers}`;
+  alert(message);
+  blocks[0].classList.remove('show');
+  blocks[0].classList.add('hide');
+  window.scrollTo(0, 0);
+}
+
 function calcLetterAmount(key, str) {
   let reg = new RegExp(key, 'gi');
-  console.log('123');
-  return str.match(reg).length;
+  return str.match(reg)?.length;
 }
 
 function getDataTypesInfo(data) {
@@ -133,8 +184,4 @@ function getDataTypesInfo(data) {
     'cast to number': typeof data === 'bigint' ? Number(data) : (typeof data === 'symbol' ? NaN : data * 1),
     'cast to string': (typeof data === 'symbol' ? 'data.toString()' : data) + '',
   };
-}
-
-function logDataTypes() {
-  dataTypes.forEach((e) => console.log(getDataTypesInfo(e)));
 }

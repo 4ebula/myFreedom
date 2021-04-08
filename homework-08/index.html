@@ -29,21 +29,25 @@
       align-items: center;
     }
     @media screen and (max-width: 1920px) {
+
       .wrapper {
         width: 1440px;
       }
     }
     @media screen and (max-width: 1600px) {
+
       .wrapper {
         width: 980px;
       }
     }
     @media screen and (max-width: 1024px) {
+
       .wrapper {
         width: 640px;
       }
     }
     @media screen and (max-width: 640px) {
+
       .wrapper {
         width: 320px;
       }
@@ -52,9 +56,14 @@
       position: relative;
       width: 90%;
       padding-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    .field > div {
+      position: absolute;
+      width: 100%;
     }
     .types {
-      width: 100%;
       height: fit-content;
       top: 0;
       left: 0;
@@ -79,6 +88,23 @@
     .input-count textarea {
       width: 90%;
       height: 300px;
+    }
+    .quiz {
+    }
+    .quiz p {
+      margin: 5px 0;
+    }
+    .quiz textarea {
+      width: 500px;
+      height: 20px;
+      margin: 5px 0;
+    }
+    @media screen and (max-width: 500px) {
+
+      .quiz textarea {
+        width: 300px;
+    }
+      
     }
   </style>
 </head>
