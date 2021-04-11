@@ -119,7 +119,7 @@ console.log(Object.fromEntries(_map));
 
 // Set - also collection
 // can apply .add()
-// .forEacch(value_1, value_2) aplies
+// .forEach(value_1, value_2) aplies
 
 console.log(Reflect.ownKeys(obj));
 
