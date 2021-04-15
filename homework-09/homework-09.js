@@ -4,15 +4,14 @@ document.querySelector('button').addEventListener('click', () => {
   const str = document.querySelector('textarea').value;
   document.querySelector('.counter').innerHTML = '';
   switch (true) {
-    case rSwitch[0].checked: displayResults(handleText(str));
+    case rSwitch[0].checked: displayWordCountResults(handleSongText(str));
     break;
-    case rSwitch[1].checked: displayResults2(handleText2(str));
-    Imap = handleText2(str);
+    case rSwitch[1].checked: displayJumpsCardResults(handleJumpsText(str));
     break;
   }
 });
 
-function handleText(str) {
+function handleSongText(str) {
   let arr = str.split('\n').filter((e) => e !== '').map((e) => e.split(' ')).flat();
   arr = arr.map((e) => e.toLowerCase().replace(/[\.,!\?\:;'"-]/g, ''));
   const set = new Set(arr);
@@ -22,7 +21,7 @@ function handleText(str) {
   return counts;
 }
 
-function handleText2 (str) {
+function handleJumpsText (str) {
   let arr = str.split('\n');
   arr = arr.map((e) => e.split(',').map((e) => e.trim()));
   const legend = ['name', 'age', 'city', 'jumps'];
@@ -41,7 +40,7 @@ function handleText2 (str) {
   return map;
 }
 
-function displayResults(counts) {
+function displayWordCountResults(counts) {
   const div = document.createElement('div');
   const h4 = document.createElement('h4');
   const ul = document.createElement('ul');
@@ -61,9 +60,9 @@ function displayResults(counts) {
   return;
 }
 
-function displayResults2(map) {
+function displayJumpsCardResults(map) {
   let age = 0, jumps = 0;
-  const divContainer = document.createElement('div');
+  const divJumpsCards = document.createElement('div');
   const ul = document.createElement('ul');
   const pAge = document.createElement('p');
   const pJumps = document.createElement('p');
@@ -88,11 +87,11 @@ function displayResults2(map) {
     li.appendChild(div);
     ul.appendChild(li);
   });
-  divContainer.appendChild(ul);
+  divJumpsCards.appendChild(ul);
   pAge.textContent = `Average age: ${(age / map.size).toFixed(2)}`;
   pJumps.textContent = `Overall jumps: ${jumps}`;
-  divContainer.appendChild(pAge);
-  divContainer.appendChild(pJumps);
-  document.querySelector('.counter').appendChild(divContainer);
+  divJumpsCards.appendChild(pAge);
+  divJumpsCards.appendChild(pJumps);
+  document.querySelector('.counter').appendChild(divJumpsCards);
   return;
 }
