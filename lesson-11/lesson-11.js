@@ -63,7 +63,7 @@ const button = document.createElement('button');
 button.className = 'class1 blue';
 button.textContent = 'Press me';
 console.log(button.dataset);
-button.dataset.add('asd');
+//button.dataset.add('asd');
 document.body.appendChild(button);
 button.style['margin'] = '100px';
 
