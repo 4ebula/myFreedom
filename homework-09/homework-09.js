@@ -1,5 +1,4 @@
 const rSwitch = document.querySelectorAll('.input input[type="radio"]');
-let Imap;
 document.querySelector('button').addEventListener('click', () => {
   const str = document.querySelector('textarea').value;
   document.querySelector('.counter').innerHTML = '';
