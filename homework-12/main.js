@@ -3,20 +3,21 @@ const tooltip = document.querySelector('.tooltip');
 const button = document.querySelector('button');
 let checkInputValue = createCheckInputValue();
 
-input.addEventListener('focus', () => {
-  input.addEventListener('input', function () {
-    switchInputState(false);
-    switch (true) {
-      case this.value.length === 0: tooltip.textContent = 'Password must not be empty';
-        break;
-      case this.value.length < 5: tooltip.textContent = 'Password must be longer than 5 characters';
-        break;
-      case this.value.length > 20: tooltip.textContent = 'Password must be shorter than 20 characters';
-        break;
-      default: tooltip.textContent = '';
-        switchInputState(true);
-    }
-  });
+button.addEventListener('click', addButtonEvent);
+
+
+input.addEventListener('input', function () {
+  switchInputState(false);
+  switch (true) {
+    case this.value.length === 0: tooltip.textContent = 'Password must not be empty';
+      break;
+    case this.value.length < 5: tooltip.textContent = 'Password must be longer than 5 characters';
+      break;
+    case this.value.length > 20: tooltip.textContent = 'Password must be shorter than 20 characters';
+      break;
+    default: tooltip.textContent = '';
+      switchInputState(true);
+  }
 });
 
 
@@ -33,14 +34,14 @@ function switchInputState(switcher) {
   }
 }
 
-function buttonEvent() {
+function addButtonEvent() {
   if (input.classList.contains('valid')) {
-    let n = checkInputValue(input.value)
-    switch (n) {
+    let currentState = checkInputValue(input.value)
+    switch (currentState) {
       case true: {
         document.querySelector('.container').innerHTML = '';
         showModal();
-      }//delete all, create logon welocome
+      }
         break;
       case -1: {
         disableInput();
@@ -49,15 +50,13 @@ function buttonEvent() {
         break;
       default: {
         tooltip.hidden = false;
-        tooltip.textContent = `You have ${n} attempts left`;
+        tooltip.textContent = `You have ${currentState} attempts left`;
       }
         break;
     }
-    console.log(n);
-    console.log(input.value);
   }
 }
-button.addEventListener('click', buttonEvent);
+
 
 function createCheckInputValue() {
   let counter = 2;
@@ -73,23 +72,22 @@ function disableInput() {
   input.className = '';
   input.value = '';
   tooltip.hidden = false;
-  button.removeEventListener('click', buttonEvent);
+  button.removeEventListener('click', addButtonEvent);
   /*
   let cooldown = setInterval(() => {
-    console.log('tic');
     tooltip.textContent = `Wait ${('0' + timer--).slice(-2)} seconds`;
   }, 1000);
   */
-  let cooldownHandler = setTimeout(function cooldown() {
+  let cooldown = setTimeout(function setCooldown() {
     tooltip.textContent = `Wait ${('0' + timer--).slice(-2)} seconds`;
-    setTimeout(cooldown, 1000);
+    setTimeout(setCooldown, 1000);
   }, 0);
   setTimeout(() => {
     input.readOnly = false;
     tooltip.hidden = true;
     // clearInterval(cooldown);
-    clearTimeout(cooldownHandler);
-    button.addEventListener('click', buttonEvent);
+    clearTimeout(cooldown);
+    button.addEventListener('click', addButtonEvent);
   }, timer * 1000);
 }
 
@@ -103,13 +101,9 @@ function showModal() {
   modal.appendChild(p);
   document.querySelector('.wrapper').appendChild(modal);
   modal.classList.add('modal');
-  setTimeout(() => {
-    modal.classList.add('slide');
-  }, 20);
+  setTimeout(() => modal.classList.add('slide'), 20);
   setTimeout(() => {
     modal.classList.remove('slide');
+    setTimeout(() => modal.remove(), 500);
   }, 1500);
-  
 }
-// TODO: Если пароль введен правильно, то появится сообщение 
-// “Добро пожаловать” и поле станет недоступным.

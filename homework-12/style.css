@@ -68,7 +68,7 @@ div {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  
+  transition-duration: 1.1s;
 }
 .slide {
   top: 0px;
