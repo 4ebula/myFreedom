@@ -57,3 +57,20 @@ div {
   border-color: transparent;
   border-bottom-color: #acacac1f;
 }
+
+.modal {
+  width: 200px;
+  height: 100px;
+  background-color: #c7c7c7;
+  position: absolute;
+  top: -120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+.slide {
+  top: 0px;
+  transition-duration: 1.1s;
+}
