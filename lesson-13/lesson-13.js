@@ -75,7 +75,7 @@ function handler() {
 const [ div1, div2, div3 ] = document.querySelectorAll('div');
 div1.addEventListener('click', (event) => {
   event.target.style.color = 'red';
-  console.log(event)}, {bubbles: false});
+  console.log(event)}, { bubbles: false });
 
 
 //div1.onclick = function(event) {console.log(event.target);};
