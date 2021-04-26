@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>homework-13</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 5px;
+    }
+
+    .dropdown {
+      position: relative;
+      border: 1px solid #000;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px #000;
+      height: 30px;
+      max-height: 30px;
+      width: 100px;
+      margin-right: 20px;
+      margin-top: 10px;
+      overflow-y: hidden;
+      transition-property: max-height;
+      transition-duration: 1s;
+    }
+
+    .dropdown.active {
+      height: fit-content;
+      max-height: 500px;
+      transition-property: max-height;
+      transition-duration: 1s;
+    }
+
+    .dropdown p {
+      text-align: center;
+      width: 90%;
+      height: 30px;
+      margin: 0 auto;
+      padding-top: 7px;
+      cursor: pointer;
+    }
+
+    .dropdown.active p {
+      border-bottom: 1px solid #bebebe;
+    }
+    .dropdown ul {
+      /*position: absolute;*/
+      top: 100%;
+      right: 0;
+      margin-top: 10px;
+      display: none;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .dropdown.active ul {
+      display: block;
+    }
+
+    .dropdown ul li {
+      width: 100%;
+      text-align: center;
+    }
+
+    .dropdown ul li:last-child {
+      margin-bottom: 10px;
+    }
+
+    .dropdown ul li:hover {
+      cursor: pointer;
+      background-color: #ccc;
+      transition-property: background-color;
+      transition-duration: 700ms;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="dropdown active">
+      <p>List 1</p>
+      <ul>
+        <li>Value 11</li>
+        <li>Value 12</li>
+        <li>Value 13</li>
+        <li>Value 14</li>
+      </ul>
+      <input type="hidden">
+    </div>
+    <div class="dropdown">
+      <p>List 2</p>
+      <ul>
+        <li>Value 21</li>
+        <li>Value 22</li>
+        <li>Value 23</li>
+        <li>Value 24</li>
+      </ul>
+      <input type="hidden">
+    </div>
+    <div class="dropdown active">
+      <p>List 3</p>
+      <ul>
+        <li>Value 31</li>
+        <li>Value 32</li>
+        <li>Value 33</li>
+        <li>Value 34</li>
+      </ul>
+      <input type="hidden">
+    </div>
+    <div class="dropdown active">
+      <p>List 4</p>
+      <ul>
+        <li>Value 41</li>
+        <li>Value 42</li>
+        <li>Value 43</li>
+        <li>Value 44</li>
+        <li>Value 45</li>
+        <li>Value 46</li>
+      </ul>
+      <input type="hidden">
+    </div>
+  </div>
+  <script src="homework-13.js"></script>
+</body>
+
+</html>
