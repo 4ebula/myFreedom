@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js"></script>
+  <title>Shoping list</title>
+</head>
+
+<body>
+  <div class="container">
+    <section class="list">
+      <div class="list__head nameless">
+        <label class="list-name">Add list name</label>
+        <input type="text">
+      </div>
+      <div class="list__body">
+        <ul class="list__body_current">
+          <li class="list__item">
+            <div class="list__item_check">
+              <input type="checkbox">
+            </div>
+            <div class="list__item_content">
+              <label>Oranges</label>
+              <input type="text" value="Oranges">
+            </div>
+            <div class="list__item_buttons">
+              <button class="btn btn_edit">I</button>
+              <button class="btn btn_delete">&times;</button>
+            </div>
+          </li>
+          <li class="list__item_add">
+            <label class="new">Add new item</label>
+            <input type="text">
+            <button class="btn btn_add">&plus;</button>
+          </li>
+        </ul>
+        <ul class="list__body_checked"></ul>
+      </div>
+    </section>
+
+    <section class="new-list">
+      <p>Add new list</p>
+      <button class="btn btn_add-list">&plus;</button>
+    </section>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 2px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+label {
+  border-bottom: 1px solid transparent;
+  display: inline-block;
+  width: 100%;
+}
+input[type="text"] {
+  display: none;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #dedede;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+  
+  &::placeholder {
+    color: #8e8e8e;
+  }
+
+}
+
+@mixin flex-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.list {
+  width: 300px;
+  min-height: 200px;
+  @include flex-box();
+  border-radius: 1px;
+  box-shadow: 2px 2px 12px #00000057;
+  padding: 5px;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.list__head {
+  position: relative;
+
+  label {
+    width: 100%;
+    font-size: 25px;
+  }
+  input {
+    font-size: 25px;
+  }
+  label,
+  input {
+    height: 30px;
+  }
+}
+
+.list__body_current {
+  border-bottom: 2px solid #b1b1b1;
+  padding-bottom: 10px;
+}
+.list__item_check {
+  width: 20px;
+}
+.list__item_content {
+ width: 267px;
+ padding-left: 5px;
+ padding-right: 10px;
+}
+
+.list__item_buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.list__item_add{
+  padding-left: 25px;
+
+  label {
+    color: #8e8e8e;
+  }
+
+  button {
+    margin-left: 10px;
+    margin-right: 19px;
+  }
+}
+
+.btn {
+  width: 15px;
+  height: 15px;
+  margin: 1px;
+  background-color: #fff;
+  box-shadow: 2px 2px 2px #00000021;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 9px;
+
+  &:active {
+    box-shadow: inset 2px 2px 2px #00000021;
+  }
+}
+
+.btn_edit {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.btn_active {
+  box-shadow: 2px 2px 2px transparent;
+  background-color: #dedede;
+  box-shadow: inset 2px 2px 2px #00000021;
+}
+
+.edit-mode {
+  label {
+    display: none;
+  }
+
+  input {
+    display: inline-block;
+  }
+}
+
+.list__body_checked {
+
+  .list__item_content label {
+    color: #8e8e8e;
+    text-decoration: line-through;
+  }
+  .list__item_buttons {
+    visibility: hidden;
+    z-index: -5;
+  }
+}
+
+.nameless {
+  
+  label {
+    color: #8e8e8e;
+  }
+}
+
+.new-list {
+  @extend .list;
+  height: 40px;
+  min-height: 40px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: #8e8e8e;
+
+  p {
+    font-size: 30px;
+    cursor: default;
+  }
+
+  button {
+    width: 35px;
+    height: 35px;
+    font-size: 30px;
+    color: #8e8e8e;
+  }
+}
