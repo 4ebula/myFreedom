@@ -23,6 +23,13 @@ Object.defineProperties(obj, {
     value: 18,
     enumerable: true,
   },
+  method: {
+    value: function() {},
+  },
+  funcName: {
+    get: function() {},
+    set: function(value) {},
+  }
 });
 
 for (let e in obj) {
