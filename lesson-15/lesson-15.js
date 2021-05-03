@@ -24,7 +24,7 @@ class Iron {
         case 2: this.temp = 300;
           break;
       }
-    } 
+    }
     else {
       console.log('Iron is turned off');
     }
@@ -55,11 +55,11 @@ console.log(mewIron.temp);
 console.log('\n\n\n');
 
 class Circle {
-  constructor(radius){
+  constructor(radius) {
     this.radius = radius ?? Circle.createDefalt();
   }
   square() {
-    return this.radius**2 * 2 * Math.PI;
+    return this.radius ** 2 * 2 * Math.PI;
   }
   static createDefalt() {
     return new this(10);
@@ -98,20 +98,59 @@ console.log(smartmap);
 
 // CHNAGING PROTOTYPE
 // STAIC
-Array.isNulableArray = function(arr) {
+Array.isNulableArray = function (arr) {
   for (let e of arr) {
     if (e !== 0) return false;
   }
   return true;
 }
 
-console.log(Array.isNulableArray([0,0,1,0,0]));
+console.log(Array.isNulableArray([0, 0, 1, 0, 0]));
 // PUBLIC
 
-Array.prototype.isEmpty = function() {
+Array.prototype.isEmpty = function () {
   return this.length === 0
 }
-const arr = new Array(1,2,3,4);
+const arr = new Array(1, 2, 3, 4);
 const emptarr = new Array();
 console.log(arr.isEmpty());
 console.log(emptarr.isEmpty());
+
+class Toggler {
+  _status = false;
+  constructor(name, cb) {
+    this.element = document.createElement('button');
+    this.element.innerText = name;
+    this.element.onclick = () => {
+      this._status = !this._status;
+      cb(this._status);
+    }
+  }
+}
+
+const arrOptions = [
+  {
+    name: 'toggler1',
+    cb: (status) => {
+      document.body.style.background = status ? 'blue' : 'white';
+    }
+  },
+  {
+    name: 'toggler2',
+    cb: (status) => {
+      document.body.style.background = status ? 'silver' : 'red';
+    }
+  },
+  {
+    name: 'toggler2',
+    cb: (status) => {
+      document.body.style.background = status ? 'skyblue' : 'green';
+    }
+  }
+]
+
+arrOptions.forEach(option => {
+  document.body.append(
+    new Toggler(option.name, option.cb).element
+  )
+})
