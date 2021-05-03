@@ -1,14 +1,16 @@
 window.onload = () => {
   document.querySelector('.container').addEventListener('click', (event) => {
-    //console.log(event.target.classList);
     switch (true) {
       case event.target.classList.contains('btn_delete'): event.target.closest('li').remove();
         break;
-      case event.target.matches('.btn_edit'): editContent(event.target);
+      case event.target.matches('.btn_edit'):
+        const content = event.target.closest('.list__item').querySelector('.list__item_content');
+        editContent(event.target, content, input, label);
         break;
-      case event.target.classList.contains('new'): editNewItem(event.target);
+      case event.target.classList.contains('new'):
+        editNewItem(event.target.closest('li'));
         break;
-      case event.target.matches('[type="checkbox"]'): hanleCheckbox(event.target);
+      case event.target.matches('[type="checkbox"]'): handleCheckbox(event.target);
         break;
       case event.target.className === 'list-name': changeListName(event.target);
         break;
@@ -19,7 +21,6 @@ window.onload = () => {
 };
 
 function addNewList(btn) { 
-  console.log('GOT');
   const curList = btn.closest('.new-list');
   const listsContainer = curList.closest('.container');
   listsContainer.insertBefore(createNewList(), curList);
@@ -27,7 +28,6 @@ function addNewList(btn) {
 }
 
 function createNewList() {
-  console.log('HERE');
   const section = document.createElement('section');
   const listHead = document.createElement('div');
   const listBody = document.createElement('div');
@@ -87,16 +87,14 @@ function changeListName(label) {
   return;
 }
 
-function editContent(btn) {
-  const container = btn.closest('.list__item');
-  const content = container.querySelector('.list__item_content');
+function editContent(btn, content) {
   const input = content.querySelector('input');
   const label = content.querySelector('label');
   if (content.classList.contains('edit-mode')) {
     label.textContent = input.value;
   }
   else {
-    setTimeout(() => { input.focus() }, 50);
+    setTimeout(() => { input.focus() }, 50); // autofocus won't work without it
     input.setSelectionRange(input.value.length, input.value.length);
   }
   btn.classList.toggle('btn_active');
@@ -104,8 +102,7 @@ function editContent(btn) {
   return;
 }
 
-function editNewItem(label) {
-  const container = label.closest('li');
+function editNewItem(container) {
   const input = container.querySelector('input');
   const button = container.querySelector('button');
   container.classList.add('edit-mode');
@@ -135,7 +132,7 @@ function checkUniqueness(label, value) {
   return uniqueness;
 }
 
-function hanleCheckbox(box) {
+function handleCheckbox(box) {
   const item = box.closest('li');
   const list = item.closest('.list__body');
   if (!box.checked) {
