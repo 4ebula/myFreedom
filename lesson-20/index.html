@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lesson-20</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      box-sizing: border-box;
+    }
+
+    .button-container {
+      margin-top: 50px;
+      margin-left: 50px;
+      display: flex;
+      flex-wrap: wrap;
+      width: 60px;
+      border: 1px solid black;
+    }
+    .button-container > div {
+      width: 15px;
+      height: 15px;
+
+      background-color: green;
+      }
+    .active {
+      background-color: red!important;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <script src="lesson-20.js"></script>
+</body>
+</html>
